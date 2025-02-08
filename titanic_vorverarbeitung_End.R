@@ -17,9 +17,10 @@ titanic_data$Embarked = as.factor(titanic_data$Embarked)
 # "Pclass" als ordered-factor
 titanic_data$Pclass = as.ordered(titanic_data$Pclass)
 
-# Imputation der fehlenden Werte in "Age" mithilfe der Anrede
-titanic_data$Age = apply(which(titanic_data$Age == 0),1,function(x){
-  if(titanic_data$Anrede == "Ms." | titanic_data$Age == "Miss." | titanic_data$Age == "Mlle."){
+# Imputation der fehlenden Werte in "Age" mithilfe der Anreden
+na_indices = which(is.na(titanic_data$Age))
+titanic_data$Age[na_indices] = apply(as.matrix(na_indices),1,function(x){
+  if(any(titanic_data$Anrede == "Miss",titanic_data$Anrede == "Ms.", titanic_data$Anrede == "Mlle.")){
     titanic_data$Age[x]= median(titanic_data$Age[titanic_data$Anrede == "Ms." | 
                                                titanic_data$Anrede == "Miss." | 
                                   titanic_data$Anrede == "Mlle."],na.rm = TRUE)}
