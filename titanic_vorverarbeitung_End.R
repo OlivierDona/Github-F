@@ -40,7 +40,8 @@ titanic_data$Age[na_indices] = apply(as.matrix(na_indices),1,function(x){
   titanic_data$Side <- ifelse(!is.na(titanic_data$Cabin) & titanic_data$Cabin != "", ifelse(as.numeric(str_extract(titanic_data$Cabin, "[0-9]+")) %% 2 == 1, "Starboard", "Port"), NA)
  
  # Entfernen nicht benötigter Variablen - ID, Name, Ticket, Cabin
-  titanic_data <- select(titanic_data, -PassengerId, -Name, -Ticket, -Cabin)
+  titanic_data <- select(titanic_data, -PassengerId, -Name, -Ticket, -Cabin) 
+  
 # Speichern des bereinigten Datensatzes
  write.csv(titanic_data, "titanic_cleaned.csv", row.names = FALSE)
 
