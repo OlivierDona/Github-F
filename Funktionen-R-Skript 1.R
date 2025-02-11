@@ -1,4 +1,4 @@
-##2ai) Funktion für deskriptive Statistiken metrischer Variablen
+##Funktion für deskriptive Statistiken metrischer Variablen
 
 decribe_metric <- function(data,variables) {
   summary_stats <- data %>%
@@ -18,7 +18,7 @@ decribe_metric <- function(data,variables) {
 
 
 
-##2aii) Funktion für deskriptive Statistiken kategorialer Variablen
+##Funktion für deskriptive Statistiken kategorialer Variablen
 
 
 describe_categorical <- function(data, variables) {
@@ -35,7 +35,7 @@ describe_categorical <- function(data, variables) {
 
 
 
-##2a(iii) Funktion für bivariate Analyse (Zusammenhang zwischen zwei kategorialen Variablen)
+##Funktion für bivariate Analyse (Zusammenhang zwischen zwei kategorialen Variablen)
 
 bivariate_categorical <- function(data, var1, var2) {
   table_result <- table(data[[var1]], data[[var2]])
@@ -46,7 +46,7 @@ bivariate_categorical <- function(data, var1, var2) {
 
 
 
-##2a(iv) Funktion für bivariate Analyse (Zusammenhang zwischen metrischer und dichotomer Variable)
+##Funktion für bivariate Analyse (Zusammenhang zwischen metrischer und dichotomer Variable)
 
 bivariate_metric_dichotomous <- function(data, metric_var, dichotomous_var) {
   t_test_result <- t.test(data[[metric_var]] ~ data[[dichotomous_var]], data = data, na.action = na.omit)
