@@ -1,4 +1,10 @@
+#source("C:/Users/UNI/Desktop/RWD/Funktionen-R-Skript 2.R")
+source("Funktionen-R-Skript 2.R")
 ##Funktion für deskriptive Statistiken metrischer Variablen
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)#!!!
 
 describe_metric <- function(data,variables) {
   summary_stats <- data %>%
@@ -8,7 +14,7 @@ describe_metric <- function(data,variables) {
       Median = median,
       Standardabweichung = sd,
       Minimum = min,
-      Maximun = max,
+      Maximum = max,
       Q1 = ~quantile(., 0.25), 
       Q3 = ~quantile(., 0.75)
     ), na.rm = TRUE)
@@ -84,3 +90,4 @@ plot_metric_correlation <- function(data,var1,var2){
   
   print(p)
 }
+

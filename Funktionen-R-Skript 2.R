@@ -12,3 +12,4 @@ calc_correlation <- function(x, y) {
   corr_value <- cor(x, y, use = "complete.obs")
   return(paste0("Korrelation: r = ", round(corr_value, 2)))
 }
+
