@@ -4,7 +4,7 @@ source("Funktionen-R-Skript 1.R")
 titanic_data = read.csv("titanic_cleaned.csv",
                         header = TRUE,
                         sep = c(",", "„"))
-
+titanic_data <- classify_family_type(titanic_data)
 #Deskription der Metrischen Variablen
 describe_metric(titanic_data, "SibSp")
 describe_metric(titanic_data, "Parch")
@@ -29,7 +29,7 @@ describe_categorical(titanic_data, "Deck")
 describe_categorical(titanic_data, "Side")
 describe_categorical(titanic_data, "Survived")#Binär, daher als Kategorisch betrachtet
 describe_categorical(titanic_data, "Pclass")#Ordinal, daher als Kategorisch betrachtet
-
+describe_categorical(titanic_data, "FamilyType")
 #Visualisierung von kategorischen Zusammenhängen
 plot_categorical(titanic_data, "Sex", "Anrede", "Survived")#
 plot_categorical(titanic_data, "Pclass", "Deck", "Side", "Survived")
@@ -41,3 +41,5 @@ bivariate_metric_dichotomous(titanic_data, "SibSp", "Survived")
 
 ##Bivariater Vergleichen
 bivariate_categorical(titanic_data, "Survived", "Sex")
+bivariate_categorical(titanic_data,  "Survived", "FamilyType")
+
